@@ -16,7 +16,7 @@ public class Main {
 		
 		ENIGMA X = new ENIGMA(rotors,positions,reflector,debug);
 		
-		String input = new String("NRFBBPVKSZ");
+		String input = new String("HELLOWORLD");
 		
 		System.out.println("\nCipher String   : " + input);
 		

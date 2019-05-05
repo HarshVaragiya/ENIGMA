@@ -64,8 +64,8 @@ public class Rotor {
 	public boolean click() {
 		int new_pos = this.position +1;
 		boolean rot = false;
-		if(new_pos >=26) {
-			new_pos %= 26;
+		if(new_pos >= this.lookup_table_size) {
+			new_pos %= this.lookup_table_size;
 			rot = true;
 		}
 		this.position = new_pos;
@@ -73,7 +73,7 @@ public class Rotor {
 	}	
 	
 	public int lookup(int input) {
-		int output = lookup_table[(input + this.position) % 26];
+		int output = lookup_table[(input + this.position) % this.lookup_table_size];
 		if(this.debug)System.out.println(input + " -> " + output);
 		return output;
 		
@@ -82,7 +82,7 @@ public class Rotor {
 	public int reverse_lookup(int input) {
 		int output = 0x00;
 		for(int i=0;i<this.lookup_table_size;i++) {
-			if(lookup_table[(i + this.position) % 26] == input)output = i;
+			if(lookup_table[(i + this.position) % this.lookup_table_size] == input)output = i;
 		}
 		if(this.debug)System.out.println(input + " -> " + output);
 		return output;
